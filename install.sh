@@ -1,20 +1,26 @@
 source 'utils.sh'
 source 'dotfiles.sh'
 
+
 # Enable 3rd party packages
 sudo add-apt-repository universe
 sudo add-apt-repository multiverse
 
+PPAS = "ppa:nathan-renniewaldock/flux"
+APT_PACKAGES = "terminator vlc git htop unrar curl unity-tweak-tool nodejs npm compiz compizconfig-settings-manager vim fluxgui"
+NODE_PACKAGES = "npm-check-updates"
+
+sudo add-apt-repository -y $PPAS
+
 sudo apt-get update
 
 print_info "Installing packages..."
-sudo apt-get -y install terminator vlc git htop unrar curl unity-tweak-tool nodejs npm \
-	compiz compizconfig-settings-manager vim
+sudo apt-get -y install $APT_PACKAGES
 print_success "Finished installing packages"
 
 sudo apt-get -y upgrade
 
-
+# Create folders and remove annoying default folders
 mkdir ~/git
 rm -rf ~/Documents
 rm -rf ~/Public
@@ -36,6 +42,10 @@ print_success "Changed system settings"
 # Font
 curl -L https://github.com/hbin/top-programming-fonts/raw/master/install.sh | bash
 print_success "Installed font"
+
+
+# Node packages
+npm install -g $NODE_PACKAGES
 
 
 install_dotfiles
