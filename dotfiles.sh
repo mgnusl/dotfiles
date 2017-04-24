@@ -34,6 +34,7 @@ install_dotfiles() {
         ln -s $dir/$file ~/.$file
     done
     # Symlink Terminator config
+    mkdir ~/.config/terminator/
     ln -s $dir/terminator-config ~/.config/terminator/config
 
     install_zsh () {

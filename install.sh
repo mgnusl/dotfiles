@@ -1,15 +1,6 @@
 source 'utils.sh'
 source 'dotfiles.sh'
 
-
-sudo add-apt-repository -y "deb http://linux.dropbox.com/ubuntu $(lsb_release -sc) main"
-sudo add-apt-repository -y "deb http://dl.google.com/linux/chrome/deb/ stable main"
-
-# Spotity
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
-echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
-
-
 sudo apt-get update
 
 print_info "Installing packages..."
@@ -36,6 +27,10 @@ print_success "Removed and created folders"
 gsettings set com.canonical.indicator.power show-percentage true
 gsettings set org.gnome.desktop.default-applications.terminal exec 'terminator'
 print_success "Changed system settings"
+
+
+# Font
+curl -L https://github.com/hbin/top-programming-fonts/raw/master/install.sh | bash
 
 
 # Install dotfiles
