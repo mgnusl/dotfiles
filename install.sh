@@ -5,14 +5,11 @@ sudo apt-get update
 
 print_info "Installing packages..."
 sudo apt-get -y install terminator vlc git htop unrar unity-tweak-tool nodejs npm \
-	compiz compizconfig-settings-manager dropbox google-chrome-stable spotify-client
+	compiz compizconfig-settings-manager
 print_success "Finished installing packages"
 
 sudo apt-get -y upgrade
 
-# Misc
-echo set completion-ignore-case on | sudo tee -a /etc/inputrc  # Case insensitive shell
-print_success "Changed system settings"
 
 mkdir ~/git
 rm -rf ~/Documents
@@ -26,14 +23,15 @@ print_success "Removed and created folders"
 # System settings
 gsettings set com.canonical.indicator.power show-percentage true
 gsettings set org.gnome.desktop.default-applications.terminal exec 'terminator'
+echo set completion-ignore-case on | sudo tee -a /etc/inputrc  # Case insensitive shell
 print_success "Changed system settings"
 
 
 # Font
 curl -L https://github.com/hbin/top-programming-fonts/raw/master/install.sh | bash
+print_success "Installed font"
 
 
-# Install dotfiles
 install_dotfiles
 
 
