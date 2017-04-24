@@ -1,6 +1,10 @@
 source 'utils.sh'
 source 'dotfiles.sh'
 
+# Enable 3rd party packages
+sudo add-apt-repository universe
+sudo add-apt-repository multiverse
+
 sudo apt-get update
 
 print_info "Installing packages..."
@@ -22,8 +26,10 @@ print_success "Removed and created folders"
 
 # System settings
 gsettings set com.canonical.indicator.power show-percentage true
+gsettings set com.canonical.Unity.ApplicationsLens display-available-apps false 	# Disable Dash 'More suggestions' section
+gsettings set com.canonical.indicator.bluetooth visible false				# Hide bluetooth icon from the toolbar		
 gsettings set org.gnome.desktop.default-applications.terminal exec 'terminator'
-echo set completion-ignore-case on | sudo tee -a /etc/inputrc  # Case insensitive shell
+echo set completion-ignore-case on | sudo tee -a /etc/inputrc  				# Case insensitive shell
 print_success "Changed system settings"
 
 
