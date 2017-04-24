@@ -1,5 +1,7 @@
 # dotfiles
 
-`sudo apt-get install git && git clone https://github.com/mgnusl/dotfiles.git`
+Dotfiles for Ubuntu
 
-`bash install.sh`
+1. Install git and clone repo: `sudo apt-get install git && git clone https://github.com/mgnusl/dotfiles.git`
+
+2. Install dotfiles: `bash install.sh`
