@@ -18,6 +18,10 @@ install_dotfiles() {
 
     ##########
 
+    print_info "Installing zsh and oh-my-zsh"
+    install_zsh
+
+
     # Create dotfiles_old in homedir
     print_info "Creating $olddir for backup of any existing dotfiles in ~ ..."
     mkdir -p $olddir
@@ -50,6 +54,7 @@ install_dotfiles() {
             print_info "Changing shell to zsh..."
             chsh -s $(which zsh)
         fi
+	git clone "https://github.com/zsh-users/antigen" ~/dotfiles/misc/antigen
     else
         # If zsh isn't installed, get the platform of the current machine
         platform=$(uname);
@@ -66,7 +71,4 @@ install_dotfiles() {
         fi
     fi
     }
-
-    print_info "Installing zsh and oh-my-zsh"
-    install_zsh
 }

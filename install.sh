@@ -4,8 +4,8 @@ source 'dotfiles.sh'
 sudo apt-get update
 
 print_info "Installing packages..."
-sudo apt-get -y install terminator vlc git htop unrar unity-tweak-tool nodejs npm \
-	compiz compizconfig-settings-manager
+sudo apt-get -y install terminator vlc git htop unrar curl unity-tweak-tool nodejs npm \
+	compiz compizconfig-settings-manager vim
 print_success "Finished installing packages"
 
 sudo apt-get -y upgrade
