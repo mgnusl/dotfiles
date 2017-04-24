@@ -1,0 +1,34 @@
+ [alias]
+	st = status
+	cm = commit -m
+	p = push
+	co = checkout
+	a = add .
+
+	# Log
+	l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cgreen\\ [%cn]" --decorate --date=short
+	ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+
+	# List aliases
+	la = !git config -l | grep alias | cut -c 7-
+
+	# Show full diff of a commit given a revision
+	dr  = "!f() { git diff "$1"^.."$1"; }; f"
+
+	# Find a file path in codebase
+	f = "!git ls-files | grep -i"
+
+	# Search/grep entire codebase for a string
+	gr = grep -Ii
+
+	# Add all and commit
+	ac = !git add . && git commit -am
+[user]
+	email = mgnusl@gmail.com
+	name = Magnus Lund
+[credential]
+	helper = cache
+[core]
+	autocrlf = input
+[push]
+	default = matching
