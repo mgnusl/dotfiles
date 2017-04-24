@@ -9,46 +9,9 @@
 source 'utils.sh'
 
 
-install_dotfiles() {
-    ########## Variables
-
-    dir=~/dotfiles                    # dotfiles directory
-    olddir=~/dotfiles_old             # old dotfiles backup directory
-    files="gitconfig vimrc zshrc"     # list of files/folders to symlink in homedir
-
-    ##########
-
-    print_info "Installing zsh and oh-my-zsh"
-    install_zsh
-
-
-    # Create dotfiles_old in homedir
-    print_info "Creating $olddir for backup of any existing dotfiles in ~ ..."
-    mkdir -p $olddir
-
-    # Change to the dotfiles directory
-    cd $dir
-
-    # Backup any existing dotfiles in homedir to dotfiles_old directory, 
-    # then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
-    for file in $files; do
-        print_info "Moving any existing dotfiles from ~ to $olddir"
-        mv ~/.$file ~/dotfiles_old/
-        print_info "Creating symlink to $file in home directory."
-        ln -s $dir/$file ~/.$file
-    done
-    # Symlink Terminator config
-    mkdir ~/.config/terminator/
-    ln -s $dir/terminator-config ~/.config/terminator/config
-
-    install_zsh () {
+install_zsh () {
     # Test to see if zsh is installed.  If it is:
     if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
-        # Clone my oh-my-zsh repository from GitHub only if it isn't already present
-        if [[ ! -d $dir/oh-my-zsh/ ]]; then
-            print_info "Installing oh-my-zsh..."
-            sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-        fi
         # Set the default shell to zsh if it isn't currently set to zsh
         if [[ ! $(echo $SHELL) == $(which zsh) ]]; then
             print_info "Changing shell to zsh..."
@@ -70,5 +33,40 @@ install_dotfiles() {
             exit
         fi
     fi
-    }
+}
+
+
+install_dotfiles() {
+    ########## Variables
+
+    dir=~/dotfiles                    # dotfiles directory
+    olddir=~/dotfiles_old             # old dotfiles backup directory
+    files="gitconfig vimrc zshrc"     # list of files/folders to symlink in homedir
+
+    ##########
+
+    print_info "Installing zsh and antigen"
+    install_zsh
+
+
+    # Create dotfiles_old in homedir
+    print_info "Creating $olddir for backup of any existing dotfiles in ~ ..."
+    mkdir -p $olddir
+
+    # Change to the dotfiles directory
+    cd $dir
+
+    # Backup any existing dotfiles in homedir to dotfiles_old directory, 
+    # then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
+    for file in $files; do
+        print_info "Moving any existing dotfiles from ~ to $olddir"
+        mv ~/.$file ~/dotfiles_old/
+        print_info "Creating symlink to $file in home directory."
+        ln -s $dir/$file ~/.$file
+    done
+
+    # Symlink Terminator config
+    mkdir ~/.config/terminator/
+    ln -s $dir/terminator-config ~/.config/terminator/config
+
 }
