@@ -29,3 +29,5 @@ alias zshconfig="nano ~/.zshrc"
 alias c=clear
 alias runserver="python manage.py runserver"
 alias venv="source env/bin/activate"
+
+TERM=xterm-256color

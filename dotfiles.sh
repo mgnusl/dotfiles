@@ -69,4 +69,7 @@ install_dotfiles() {
     mkdir ~/.config/terminator/
     ln -s $dir/terminator-config ~/.config/terminator/config
 
+    # Install Vundle (for Vim)
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
 }
