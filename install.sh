@@ -6,16 +6,13 @@ source 'dotfiles.sh'
 sudo add-apt-repository universe
 sudo add-apt-repository multiverse
 
-PPAS = "ppa:nathan-renniewaldock/flux"
-APT_PACKAGES = "terminator vlc git htop unrar curl unity-tweak-tool nodejs npm compiz compizconfig-settings-manager vim fluxgui"
-NODE_PACKAGES = "npm-check-updates"
-
-sudo add-apt-repository -y $PPAS
+# PPAs
+sudo add-apt-repository -y ppa:nathan-renniewaldock/flux
 
 sudo apt-get update
 
 print_info "Installing packages..."
-sudo apt-get -y install $APT_PACKAGES
+sudo apt-get -y install terminator vlc git htop unrar curl unity-tweak-tool nodejs npm compiz compizconfig-settings-manager vim fluxgui
 print_success "Finished installing packages"
 
 sudo apt-get -y upgrade
@@ -45,7 +42,7 @@ print_success "Installed font"
 
 
 # Node packages
-npm install -g $NODE_PACKAGES
+sudo npm install -g npm-check-updates n
 
 
 install_dotfiles
