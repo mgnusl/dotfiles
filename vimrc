@@ -62,3 +62,11 @@ set mouse=a
 colorscheme lilypink
 syntax enable
 set t_Co=256
+
+
+" Remap escape key to jj
+inoremap jj <ESC>
+
+" Change the leader key
+let mapleader = "\<Space>"
+
