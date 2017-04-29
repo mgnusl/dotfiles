@@ -9,3 +9,6 @@ Dotfiles for Ubuntu
 
 ## Install vim plugins
 `:PluginInstall` in vim
+
+## Misc
+May need to run `exec zsh` to install antigen plugins
