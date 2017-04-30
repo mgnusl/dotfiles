@@ -9,7 +9,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'itchyny/lightline.vim'
 Plugin 'elzr/vim-json'
-
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 
 " Keep Plugin commands between vundle#begin/end.
@@ -22,12 +23,15 @@ filetype plugin indent on    " required
 " Lightline
 set laststatus=2
 
+" Disable markdown package folding
+let g:vim_markdown_folding_disabled = 1
+
 set number
 set hidden
 set history=100
 
 filetype indent on
-set nowrap
+" set nowrap
 set smartindent
 set autoindent
 
