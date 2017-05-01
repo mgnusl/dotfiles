@@ -11,7 +11,7 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'elzr/vim-json'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-
+Plugin 'scrooloose/nerdtree'
 
 " Keep Plugin commands between vundle#begin/end.
 Plugin 'flazz/vim-colorschemes'
@@ -25,6 +25,12 @@ set laststatus=2
 
 " Disable markdown package folding
 let g:vim_markdown_folding_disabled = 1
+
+" Nerdtree shortcut (ctrl-n)
+map <C-n> :NERDTreeToggle<CR>
+" Close vim if only window left open is Nerdtree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 
 set number
 set hidden
