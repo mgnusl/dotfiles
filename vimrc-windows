@@ -1,0 +1,50 @@
+set nocp " Required for Pathogen
+execute pathogen#infect()
+
+set number
+set hidden
+set history=100
+
+filetype indent on
+" set nowrap
+set smartindent
+set autoindent
+
+" Highlight current line
+set cursorline
+
+" Allow backspacing over autoindent, line breaks and start of insert action
+set backspace=indent,eol,start
+
+" Highlight search results
+set hlsearch
+
+" Show matching parenthesis
+set showmatch
+
+" Use case insensitive search, except when using capital letters
+set ignorecase
+set smartcase
+
+" Instead of failing a command because of unsaved changes, instead raise a
+" dialogue asking if you wish to save changed files.
+set confirm
+
+" Enable use of the mouse for all modes
+set mouse=a
+
+" Set the command window height to 2 lines,
+" set cmdheight=2
+
+
+" colorscheme Tomorrow-Night
+colorscheme lilypink
+syntax enable
+set t_Co=256
+
+
+" Remap escape key to jj
+inoremap jj <ESC>
+
+" Change the leader key
+let mapleader = "\<Space>"
