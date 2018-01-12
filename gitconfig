@@ -1,34 +1,45 @@
- [alias]
-	st = status
-	cm = commit -m
-	p = push
-	co = checkout
-	a = add .
+[alias]
+ st = status
+ cm = commit -m
+ p = push
+ pl = pull
+ co = checkout
+ cob = checkout -b
+ a = add .
 
-	# Log
-	l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cgreen\\ [%cn]" --decorate --date=short
-	ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+ # Add all and commit
+ ac = !git add . && git commit -am
 
-	# List aliases
-	la = !git config -l | grep alias | cut -c 7-
+ # Short diff
+ d = diff --color-words
+ # Diff stats
+ ds = diff --stat
 
-	# Show full diff of a commit given a revision
-	dr  = "!f() { git diff "$1"^.."$1"; }; f"
+ # List branches sorted by last modified
+ b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
 
-	# Find a file path in codebase
-	f = "!git ls-files | grep -i"
+ # Log
+ l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cgreen\\ [%cn]" --decorate --date=short
+ ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
 
-	# Search/grep entire codebase for a string
-	gr = grep -Ii
+ # List aliases
+ la = !git config -l | grep alias | cut -c 7-
 
-	# Add all and commit
-	ac = !git add . && git commit -am
+ # Show full diff of a commit given a revision
+ dr  = "!f() { git diff "$1"^.."$1"; }; f"
+
+ # Find a file path in codebase
+ f = "!git ls-files | grep -i"
+
+ # Search/grep entire codebase for a string
+ gr = grep -Ii
+
 [user]
-	email = mgnusl@gmail.com
+	email = magnus.lund@knowit.no
 	name = Magnus Lund
 [credential]
-	helper = cache
+ helper = wincred
 [core]
-	autocrlf = input
+	autocrlf = false
 [push]
-	default = matching
+	default = current
